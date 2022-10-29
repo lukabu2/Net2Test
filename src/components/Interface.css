@@ -1,0 +1,57 @@
+
+.centerItem{
+    display:flex;
+    justify-content: center;
+    
+}
+.centerContent{
+    text-align: center;
+    padding-top: 2vh;
+    color:  #28506D;    
+}   
+#largeFont{
+    font-size: 30px;
+}
+#smallFont{
+    font-size: 16px;
+}
+::placeholder{
+    padding-left: 1em;
+}
+#backgroundCol{
+    background-color: #28506D;
+    height: 100vh;
+
+}
+#parEdit{
+    padding-bottom: 2vh;
+    color: white;
+    font-size: 0.75em;
+}
+#textUnderline{
+    text-decoration:underline;
+    color: white;
+}
+.borderRad {
+    width: 25vw;
+    height: 6vh;
+    box-sizing: border-box;
+    border: 1px solid #DFE0EB;
+    gap: 10px;
+} 
+#formWidth{
+    width: 500px;
+    height: 500px;
+    padding-top: 15vh;
+    background-color: white;
+    margin-top: 10vh;
+}
+#buttonEdit{
+    width: 25vw;
+    height: 6vh;
+    background-color: #28506D;
+    border: 0px;
+    color: white;
+    padding-top: 1vh;
+
+}
