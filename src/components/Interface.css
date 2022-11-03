@@ -1,4 +1,3 @@
-
 .centerItem{
     display:flex;
     justify-content: center;
@@ -8,6 +7,8 @@
     text-align: center;
     padding-top: 2vh;
     color:  #28506D;    
+    display: flex;
+    justify-content: center;
 }   
 #largeFont{
     font-size: 30px;
@@ -45,6 +46,7 @@
     padding-top: 15vh;
     background-color: white;
     margin-top: 10vh;
+
 }
 #buttonEdit{
     width: 25vw;
@@ -53,5 +55,8 @@
     border: 0px;
     color: white;
     padding-top: 1vh;
+    display: flex;
+    justify-content: center;
+    
 
 }

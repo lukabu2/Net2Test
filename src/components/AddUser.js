@@ -4,7 +4,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 
-function EditUser({ show, handleClose, id, token }) {
+function AddUser({ show, handleClose, token }) {
   const [data, setData] = useState({});
   let {
     firstName,
@@ -24,28 +24,9 @@ function EditUser({ show, handleClose, id, token }) {
     tokenExpiration,
   } = data !== null ? data : "";
 
-  function getUserById() {
-    let headers = {
-      accept: "text/plain",
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json-patch+json",
-    };
-    let body = { id };
-    axios
-      .post("https://pimb2bqaapi.pimalion.cloud/app/User/Get", body, {
-        headers,
-      })
-      .then((response) => {
-        setData(response.data.data.user);
-      });
-  }
-  useEffect(() => {
-    getUserById();
-  }, [id]);
-  function update() {
+  function addUser() {
     let body = {
       user: {
-        id: id,
         firstName: document.getElementById("firstName").value,
         lastName: document.getElementById("lastName").value,
         email: document.getElementById("email").value,
@@ -80,19 +61,13 @@ function EditUser({ show, handleClose, id, token }) {
     return (
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
             <Col lg={6}>
               <label>Name</label>
-              <Form.Control
-                type="text"
-                name="firstName"
-                id="firstName"
-                placeholder="Enter name..."
-                defaultValue={data.firstName}
-              />
+              <Form.Control type="text" name="firstName" id="firstName" />
             </Col>
             <Col lg={6}>
               <label>Last Name</label>
@@ -101,7 +76,6 @@ function EditUser({ show, handleClose, id, token }) {
                 name="lastName"
                 id="lastName"
                 placeholder="Enter last name..."
-                defaultValue={data.lastName}
               />
             </Col>
             <Col lg={12}>
@@ -111,7 +85,6 @@ function EditUser({ show, handleClose, id, token }) {
                 name="email"
                 id="email"
                 placeholder="Enter email..."
-                defaultValue={data.email}
               />
             </Col>
             <Col lg={12}>
@@ -121,7 +94,6 @@ function EditUser({ show, handleClose, id, token }) {
                 name="username"
                 id="userName"
                 placeholder="Enter usename..."
-                defaultValue={data.userName}
               />
             </Col>
             <Col lg={12}>
@@ -131,7 +103,6 @@ function EditUser({ show, handleClose, id, token }) {
                 name="password"
                 id="password"
                 placeholder="Enter password..."
-                defaultValue={"practicalTest@gmail.com2022!"}
               />
             </Col>
             <Col lg={12}>
@@ -142,13 +113,9 @@ function EditUser({ show, handleClose, id, token }) {
                 id="role"
                 //
               >
-                {data.roles !== undefined &&
-                  data.roles.length > 0 &&
-                  data.roles.map((el, i) => (
-                    <option key={i} value={el.name} name="name">
-                      {el.name}
-                    </option>
-                  ))}
+                <option value={1} name="name">
+                  Admin
+                </option>
               </Form.Select>
             </Col>
           </Row>
@@ -157,7 +124,7 @@ function EditUser({ show, handleClose, id, token }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={update}>
+          <Button variant="primary" onClick={addUser}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -168,4 +135,4 @@ function EditUser({ show, handleClose, id, token }) {
   }
 }
 
-export default EditUser;
+export default AddUser;
