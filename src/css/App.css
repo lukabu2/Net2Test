@@ -1,0 +1,111 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dropdown-toggle.btn {
+  background-color: transparent !important;
+  border: none;
+  outline: none;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+#passwordId {
+  background: url(../assets/eye.svg) no-repeat 349px 9px;
+  outline: none;
+}
+#emailId {
+  outline: none;
+}
+.input-fields.form-control {
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #dfe0eb;
+  height: 48px;
+  border-radius: unset !important;
+  padding: 8px !important;
+}
+.input-fields.form-select {
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #dfe0eb;
+  height: 48px;
+  border-radius: unset !important;
+}
+.text-color-muted {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+  color: #898e9d;
+}
+.small-button {
+  width: 125px;
+  height: 40px;
+  background: #28506d !important;
+  border: 2px solid #28506d !important;
+  border-radius: unset !important;
+  outline: none !important;
+}
+.text-bold-700-modal-title {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 29px;
+}
+.text-navy {
+  color: #28506d !important;
+}
+.overflow-y-scroll{
+  overflow-y: scroll !important;
+  height: 47vh;
+}
+
+.custom-scroll-bar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}

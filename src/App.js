@@ -1,4 +1,5 @@
-import "./App.css";
+import React from "react";
+import "./css/App.css";
 import LoginInterface from "./components/LoginInterface";
 import UserPage from "./components/UserPage";
 import { Switch, Route } from "react-router-dom";

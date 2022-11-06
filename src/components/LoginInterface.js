@@ -2,11 +2,10 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
+import "../css/Interface.css";
 function LoginInterface() {
-  // const [data, setData] = useState([{}]);
   let history = useHistory();
-  function registerFun(body) {
+  async function registerFun(body) {
     let headers = {
       accept: "text/plain",
       "Content-Type": "application/json-patch+json",
@@ -15,17 +14,20 @@ function LoginInterface() {
       .post("https://pimb2bqaapi.pimalion.cloud/app/Account/Login", body, {
         headers,
       })
-      .then((response) => {
+      .then(async (response) => {
         console.log(response.status);
         if (response.status === 200) {
-          // setData(response.data);
           // console.log(response.data.data);
           window.localStorage.setItem(
             "token",
-            response.data.data.tokenResponse.token
+            await response.data.data.tokenResponse.token
+          );
+          window.localStorage.setItem(
+            "userId",
+            await response.data.data.tokenResponse.user.id
           );
           history.push("users");
-        } 
+        }
       });
   }
   function submit(e) {
@@ -64,7 +66,7 @@ function LoginInterface() {
           </div>
           <div className="centerContent">
             <button id="buttonEdit" onClick={submit}>
-              <b>Login</b>
+              <b>Sign in</b>
             </button>
           </div>
         </form>

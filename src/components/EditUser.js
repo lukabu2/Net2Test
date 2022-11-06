@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
-
-function EditUser({ show, handleClose, id, token }) {
+import "../css/Interface.css";
+function EditUser({ show, handleClose, id, token, setActive }) {
   const [data, setData] = useState({});
   let {
     firstName,
@@ -23,7 +23,7 @@ function EditUser({ show, handleClose, id, token }) {
     enabled,
     tokenExpiration,
   } = data !== null ? data : "";
-
+  console.log(data);
   function getUserById() {
     let headers = {
       accept: "text/plain",
@@ -36,8 +36,13 @@ function EditUser({ show, handleClose, id, token }) {
         headers,
       })
       .then((response) => {
-        setData(response.data.data.user);
-      });
+        if (response.status === 200) {
+          setData(response.data.data.user);
+          setActive(true);
+          alert("Successfully updated user!");
+        }
+      })
+      .catch((err) => console.log(err));
   }
   useEffect(() => {
     getUserById();
@@ -80,66 +85,72 @@ function EditUser({ show, handleClose, id, token }) {
     return (
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit User</Modal.Title>
+          <div className="text-bold-700-modal-title text-navy">Edit User</div>
         </Modal.Header>
         <Modal.Body>
           <Row>
             <Col lg={6}>
-              <label>Name</label>
+              <label className="text-color-muted">Name</label>
               <Form.Control
                 type="text"
                 name="firstName"
                 id="firstName"
+                className="input-fields"
                 placeholder="Enter name..."
                 defaultValue={data.firstName}
               />
             </Col>
             <Col lg={6}>
-              <label>Last Name</label>
+              <label className="text-color-muted">Last Name</label>
               <Form.Control
                 type="text"
                 name="lastName"
                 id="lastName"
+                className="input-fields"
                 placeholder="Enter last name..."
                 defaultValue={data.lastName}
               />
             </Col>
-            <Col lg={12}>
-              <label>E-mail</label>
+            <Col lg={12} className="mt-3">
+              <label className="text-color-muted">E-mail</label>
               <Form.Control
                 type="email"
                 name="email"
                 id="email"
+                className="input-fields"
                 placeholder="Enter email..."
                 defaultValue={data.email}
               />
             </Col>
-            <Col lg={12}>
-              <label>Username</label>
+            <Col lg={12} className="mt-3">
+              <label className="text-color-muted">Username</label>
               <Form.Control
                 type="text"
                 name="username"
                 id="userName"
+                className="input-fields"
                 placeholder="Enter usename..."
                 defaultValue={data.userName}
               />
             </Col>
-            <Col lg={12}>
-              <label>Password</label>
+            <Col lg={12} className="mt-3">
+              <label className="text-color-muted">Password</label>
               <Form.Control
                 type="password"
                 name="password"
                 id="password"
+                className="input-fields"
                 placeholder="Enter password..."
                 defaultValue={"practicalTest@gmail.com2022!"}
               />
             </Col>
-            <Col lg={12}>
-              <label>Role</label>
+            <Col lg={12} className="mt-3">
+              <label className="text-color-muted">Role</label>
               <Form.Select
                 aria-label="role"
                 name="role"
                 id="role"
+                className="input-fields"
                 //
               >
                 {data.roles !== undefined &&
@@ -154,11 +165,8 @@ function EditUser({ show, handleClose, id, token }) {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={update}>
-            Save Changes
+          <Button className="small-button"  onClick={update}>
+            Edit
           </Button>
         </Modal.Footer>
       </Modal>
